@@ -1,4 +1,7 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+
+
 
 namespace JornadaMilhas.API.Endpoint
 {
