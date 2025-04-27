@@ -21,7 +21,7 @@ public class OfertaViagem_POST:IClassFixture<JornadaMilhasWebApplicationFactory>
     }
 
     [Fact]
-    public async Task Cadastra_OfertaViagem()
+    public async Task Cadastra_OfertaViagemAutenticado()
     {
         //Arrange
         using var client = await app.GetClientWithAccessTokenAsync();
@@ -39,5 +39,24 @@ public class OfertaViagem_POST:IClassFixture<JornadaMilhasWebApplicationFactory>
         //Assert
         Assert.NotNull(response);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+    }
+    [Fact]
+    public async Task Cadastra_OfertaViagemNaoAutenticado()
+    {
+        //Arrange
+        using var client =  app.CreateClient();
+
+        var OfertaViagem = new OfertaViagem()
+        {
+            Preco = 100,
+            Rota = new Rota("Origem", "Destino"),
+            Periodo = new Periodo(DateTime.Parse("2024-03-03"), DateTime.Parse("2024-03-06"))
+        };
+
+
+        //Act
+        var response = await client.PostAsJsonAsync("/ofertas-viagem", OfertaViagem);
+        //Assert
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 }
