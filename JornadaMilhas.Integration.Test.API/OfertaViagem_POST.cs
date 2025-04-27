@@ -11,14 +11,19 @@ using System.Threading.Tasks;
 
 namespace JornadaMilhas.Integration.Test.API;
 
-public class OfertaViagem_POST
+public class OfertaViagem_POST:IClassFixture<JornadaMilhasWebApplicationFactory>
 {
+    public JornadaMilhasWebApplicationFactory app;
+
+    public OfertaViagem_POST(JornadaMilhasWebApplicationFactory app)
+    {
+        this.app = app;
+    }
+
     [Fact]
     public async Task Cadastra_OfertaViagem()
     {
         //Arrange
-        var app = new JornadaMilhasWebApplicationFactory();
-
         using var client = await app.GetClientWithAccessTokenAsync();
 
         var OfertaViagem = new OfertaViagem()
