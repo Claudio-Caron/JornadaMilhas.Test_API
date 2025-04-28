@@ -13,7 +13,7 @@ namespace JornadaMilhas.Integration.Test.API;
 
 public class OfertaViagem_POST:IClassFixture<JornadaMilhasWebApplicationFactory>
 {
-    public JornadaMilhasWebApplicationFactory app;
+    private JornadaMilhasWebApplicationFactory app;
 
     public OfertaViagem_POST(JornadaMilhasWebApplicationFactory app)
     {
