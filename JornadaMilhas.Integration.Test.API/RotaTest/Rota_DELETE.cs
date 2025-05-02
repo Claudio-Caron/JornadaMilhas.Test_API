@@ -19,7 +19,7 @@ public class Rota_DELETE:IClassFixture<JornadaMilhasWebApplicationFactory>
     [Fact]
     public async Task Delete_Rota_PorId()
     {
-        //Arrage
+        //Arrange
         var rotaRecuperada = factory.Context.Rota.FirstOrDefault(); 
         if (rotaRecuperada is null)
         {

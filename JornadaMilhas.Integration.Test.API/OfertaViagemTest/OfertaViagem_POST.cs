@@ -9,9 +9,9 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JornadaMilhas.Integration.Test.API;
- 
-public class OfertaViagem_POST:IClassFixture<JornadaMilhasWebApplicationFactory>
+namespace JornadaMilhas.Integration.Test.API.OfertaViagemTest;
+
+public class OfertaViagem_POST : IClassFixture<JornadaMilhasWebApplicationFactory>
 {
     private JornadaMilhasWebApplicationFactory app;
 
@@ -44,7 +44,7 @@ public class OfertaViagem_POST:IClassFixture<JornadaMilhasWebApplicationFactory>
     public async Task Cadastra_OfertaViagemNaoAutenticado()
     {
         //Arrange
-        using var client =  app.CreateClient();
+        using var client = app.CreateClient();
 
         var OfertaViagem = new OfertaViagem()
         {

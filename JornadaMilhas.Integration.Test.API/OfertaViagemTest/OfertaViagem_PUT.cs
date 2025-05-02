@@ -8,9 +8,9 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JornadaMilhas.Integration.Test.API;
+namespace JornadaMilhas.Integration.Test.API.OfertaViagemTest;
 
-public class OfertaViagem_PUT:IClassFixture<JornadaMilhasWebApplicationFactory>
+public class OfertaViagem_PUT : IClassFixture<JornadaMilhasWebApplicationFactory>
 {
     private readonly JornadaMilhasWebApplicationFactory app;
     public OfertaViagem_PUT(JornadaMilhasWebApplicationFactory app)
@@ -27,7 +27,7 @@ public class OfertaViagem_PUT:IClassFixture<JornadaMilhasWebApplicationFactory>
             ofertaExistente = new OfertaViagem
                 (
                     new Rota("Origem", "Destino"),
-                    new Periodo(DateTime.Parse("2025-03-03"),DateTime.Parse("2025-03-06")),
+                    new Periodo(DateTime.Parse("2025-03-03"), DateTime.Parse("2025-03-06")),
                     200
                 );
             app.Context.Add(ofertaExistente);
@@ -47,6 +47,6 @@ public class OfertaViagem_PUT:IClassFixture<JornadaMilhasWebApplicationFactory>
         //Assert
         Assert.NotNull(result);
         Assert.Equal(HttpStatusCode.NoContent, result.StatusCode);
-        
+
     }
 }

@@ -9,9 +9,9 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JornadaMilhas.Integration.Test.API;
+namespace JornadaMilhas.Integration.Test.API.OfertaViagemTest;
 
-public class OfertaViagem_GET:IClassFixture<JornadaMilhasWebApplicationFactory>
+public class OfertaViagem_GET : IClassFixture<JornadaMilhasWebApplicationFactory>
 {
     private readonly JornadaMilhasWebApplicationFactory app;
 
@@ -39,7 +39,7 @@ public class OfertaViagem_GET:IClassFixture<JornadaMilhasWebApplicationFactory>
 
 
         //Act
-        var response = await client.GetFromJsonAsync<OfertaViagem>("/ofertas-viagem/"+ ofertaExistente.Id);
+        var response = await client.GetFromJsonAsync<OfertaViagem>("/ofertas-viagem/" + ofertaExistente.Id);
 
         //Assert
         Assert.NotNull(response);

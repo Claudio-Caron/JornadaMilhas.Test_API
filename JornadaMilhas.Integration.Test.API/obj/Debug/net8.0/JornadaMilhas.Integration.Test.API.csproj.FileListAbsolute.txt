@@ -468,3 +468,4 @@ C:\Users\claud\Versionamento\JornadaMilhas.Test_Api\JornadaMilhas.Integration.Te
 C:\Users\claud\Versionamento\JornadaMilhas.Test_Api\JornadaMilhas.Integration.Test.API\obj\Debug\net8.0\JornadaMilhas.Integration.Test.API.pdb
 C:\Users\claud\Versionamento\JornadaMilhas.Test_Api\JornadaMilhas.Integration.Test.API\obj\Debug\net8.0\JornadaMilhas.Integration.Test.API.genruntimeconfig.cache
 C:\Users\claud\Versionamento\JornadaMilhas.Test_Api\JornadaMilhas.Integration.Test.API\obj\Debug\net8.0\ref\JornadaMilhas.Integration.Test.API.dll
+C:\Users\claud\Versionamento\JornadaMilhas.Test_Api\JornadaMilhas.Integration.Test.API\bin\Debug\net8.0\Bogus.dll

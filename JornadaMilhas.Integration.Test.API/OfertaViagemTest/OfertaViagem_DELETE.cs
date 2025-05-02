@@ -8,9 +8,9 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JornadaMilhas.Integration.Test.API;
+namespace JornadaMilhas.Integration.Test.API.OfertaViagemTest;
 
-public class OfertaViagem_DELETE:IClassFixture<JornadaMilhasWebApplicationFactory>
+public class OfertaViagem_DELETE : IClassFixture<JornadaMilhasWebApplicationFactory>
 {
     private readonly JornadaMilhasWebApplicationFactory app;
 
@@ -32,7 +32,7 @@ public class OfertaViagem_DELETE:IClassFixture<JornadaMilhasWebApplicationFactor
                 206
             );
             app.Context.Add(ofertaExistente);
-            app.Context.SaveChanges();  
+            app.Context.SaveChanges();
         }
 
         var client = await app.GetClientWithAccessTokenAsync();
@@ -40,10 +40,10 @@ public class OfertaViagem_DELETE:IClassFixture<JornadaMilhasWebApplicationFactor
 
         //Act
         var result = await client.DeleteAsync("/ofertas-viagem/" + ofertaExistente.Id);
-        
+
         //Assert
         Assert.NotNull(result);
-        
+
         Assert.Equal(HttpStatusCode.NoContent, result.StatusCode);
         //Assert.Equal(result.Preco, ofertaExistente.Preco, 0.001);
         //Assert.Equal(result.Periodo.DataInicial, ofertaExistente.Periodo.DataInicial);
