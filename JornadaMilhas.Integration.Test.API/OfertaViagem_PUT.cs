@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace JornadaMilhas.Integration.Test.API;
 
-public class OfertaViagemUpdate:IClassFixture<JornadaMilhasWebApplicationFactory>
+public class OfertaViagem_PUT:IClassFixture<JornadaMilhasWebApplicationFactory>
 {
     private readonly JornadaMilhasWebApplicationFactory app;
-    public OfertaViagemUpdate(JornadaMilhasWebApplicationFactory app)
+    public OfertaViagem_PUT(JornadaMilhasWebApplicationFactory app)
     {
         this.app = app;
     }
