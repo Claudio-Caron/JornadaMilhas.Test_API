@@ -16,6 +16,7 @@ public class Rota_GET:IClassFixture<JornadaMilhasWebApplicationFactory>
     {
         this.app = app;
     }
+    
     [Fact]
     public async Task Recupera_Rota()
     {
@@ -34,6 +35,26 @@ public class Rota_GET:IClassFixture<JornadaMilhasWebApplicationFactory>
         HttpResponseMessage result = await client.GetAsync("/rota-viagem");
         //Assert
 
+        Assert.NotNull(result);
+        Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+    }
+    [Fact]
+    public async Task Recupera_Rota_PorId()
+    {
+        //Arrange
+        Rota rotaExistente = app.Context.Rota.FirstOrDefault();
+        if (rotaExistente is null)
+        {
+            rotaExistente = new Rota("Origem", "Destino");
+            app.Context.Add(rotaExistente);
+            app.Context.SaveChanges();
+        }
+        HttpClient client = await app.GetClientWithAccessTokenAsync();
+
+        //Act
+        HttpResponseMessage result = await client.GetAsync("/rota-viagem/" + rotaExistente.Id);
+
+        //Assert
         Assert.NotNull(result);
         Assert.Equal(HttpStatusCode.OK, result.StatusCode);
     }
