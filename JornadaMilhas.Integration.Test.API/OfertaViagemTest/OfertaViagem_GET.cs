@@ -1,8 +1,10 @@
 ﻿using JornadaMilhas.Dados;
 using JornadaMilhas.Dominio.Entidades;
 using JornadaMilhas.Dominio.ValueObjects;
+using JornadaMilhas.Integration.Test.API.DataBuilders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Json;
@@ -48,4 +50,30 @@ public class OfertaViagem_GET : IClassFixture<JornadaMilhasWebApplicationFactory
         Assert.Equal(response.Rota.Destino, ofertaExistente.Rota.Destino);
 
     }
+    [Fact]
+    public async Task Get_OfertasViagem_Por_Pagina()
+    {
+        //Arrange
+        //if (app.Context.OfertasViagem.Count() < 80)
+        //{
+
+        //}
+        int pagina = 1;
+        int tamanhoPorPagina = 80;
+
+        var listaOfertas = new OfertaViagemDataBuilder().Generate(tamanhoPorPagina);
+        app.Context.OfertasViagem.AddRange(listaOfertas);
+        app.Context.SaveChanges();
+
+        
+        var client = await app.GetClientWithAccessTokenAsync();
+        //Act
+        var response = await client.GetFromJsonAsync<ICollection<OfertaViagem>>
+            ($"/ofertas-viagem?pagina={pagina}&tamanhoPorPagina={tamanhoPorPagina}");
+
+        //Assert
+        Assert.True(response != null);
+        Assert.Equal(tamanhoPorPagina, response.Count());
+    }
+
 }
