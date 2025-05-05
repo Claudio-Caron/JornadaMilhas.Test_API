@@ -2,6 +2,7 @@
 using JornadaMilhas.Dominio.Entidades;
 using JornadaMilhas.Dominio.ValueObjects;
 using JornadaMilhas.Integration.Test.API.DataBuilders;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -75,5 +76,26 @@ public class OfertaViagem_GET : IClassFixture<JornadaMilhasWebApplicationFactory
         Assert.True(response != null);
         Assert.Equal(tamanhoPorPagina, response.Count());
     }
+    [Fact]
+    public async Task Get_OfertasViagem_Ultima_Pagina()
+    {
+        //Arrange
+        int pagina = 4;
+        int tamanhoPorPagina = 25;
 
+        app.Context.Database.ExecuteSqlRaw("DELETE FROM OfertasViagem");
+        var listaOfertas = new OfertaViagemDataBuilder().Generate(80);
+        app.Context.OfertasViagem.AddRange(listaOfertas);
+        app.Context.SaveChanges();
+
+        HttpClient client = await app.GetClientWithAccessTokenAsync();
+
+        //Act
+        var response = await client.GetFromJsonAsync<IEnumerable<OfertaViagem>>
+            ($"/ofertas-viagem?pagina={pagina}&tamanhoPorPagina={tamanhoPorPagina}");
+        //Assert
+        Assert.True (response != null);
+        Assert.Equal(5, response.Count());
+        
+    }
 }
