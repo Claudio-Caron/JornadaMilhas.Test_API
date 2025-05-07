@@ -9988,6 +9988,8 @@
     "net8.0": [
       "Bogus >= 35.5.0",
       "JornadaMilhas.API >= 1.0.0",
+      "JornadaMilhas.Dados >= 1.0.0",
+      "JornadaMilhas.Dominio >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Testing >= 8.0.2",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
       "coverlet.collector >= 6.0.0",
@@ -10025,6 +10027,12 @@
           "projectReferences": {
             "C:\\Users\\claud\\Versionamento\\JornadaMilhas.Test_Api\\JornadaMilhas-API-rec-main\\src\\JornadaMilhas.API\\JornadaMilhas.API.csproj": {
               "projectPath": "C:\\Users\\claud\\Versionamento\\JornadaMilhas.Test_Api\\JornadaMilhas-API-rec-main\\src\\JornadaMilhas.API\\JornadaMilhas.API.csproj"
+            },
+            "C:\\Users\\claud\\Versionamento\\JornadaMilhas.Test_Api\\JornadaMilhas-API-rec-main\\src\\JornadaMilhas.Dados\\JornadaMilhas.Dados.csproj": {
+              "projectPath": "C:\\Users\\claud\\Versionamento\\JornadaMilhas.Test_Api\\JornadaMilhas-API-rec-main\\src\\JornadaMilhas.Dados\\JornadaMilhas.Dados.csproj"
+            },
+            "C:\\Users\\claud\\Versionamento\\JornadaMilhas.Test_Api\\JornadaMilhas-API-rec-main\\src\\JornadaMilhas.Dominio\\JornadaMilhas.Dominio.csproj": {
+              "projectPath": "C:\\Users\\claud\\Versionamento\\JornadaMilhas.Test_Api\\JornadaMilhas-API-rec-main\\src\\JornadaMilhas.Dominio\\JornadaMilhas.Dominio.csproj"
             }
           }
         }

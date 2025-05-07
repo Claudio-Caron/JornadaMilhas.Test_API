@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JornadaMilhas-API-rec-main\src\JornadaMilhas.API\JornadaMilhas.API.csproj" />
+    <ProjectReference Include="..\JornadaMilhas-API-rec-main\src\JornadaMilhas.Dados\JornadaMilhas.Dados.csproj" />
+    <ProjectReference Include="..\JornadaMilhas-API-rec-main\src\JornadaMilhas.Dominio\JornadaMilhas.Dominio.csproj" />
   </ItemGroup>
 
   <ItemGroup>

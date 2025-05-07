@@ -1,0 +1,1 @@
+dotnet test .test/JornadaMilhas.Unit.Test

@@ -38,6 +38,8 @@
         "dependencies": {
           "Bogus": "35.5.0",
           "JornadaMilhas.API": "1.0.0",
+          "JornadaMilhas.Dados": "1.0.0",
+          "JornadaMilhas.Dominio": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Testing": "8.0.2",
           "Microsoft.NET.Test.Sdk": "17.8.0",
           "coverlet.collector": "6.0.0",
