@@ -40,7 +40,7 @@ public class OfertaViagemConstrutor
 
         OfertaViagem oferta = new OfertaViagem(rota, periodo, preco);
 
-        Assert.Contains("A oferta de viagem não possui rota ou período válidos.", oferta.Erros.Sumario);
+        Assert.Contains("A oferta de viagem nao possui rota ou periodo validos.", oferta.Erros.Sumario);
         Assert.False(oferta.EhValido);
 
     }
@@ -56,7 +56,7 @@ public class OfertaViagemConstrutor
 
         OfertaViagem oferta = new(rota, periodo, preco);
 
-        Assert.Contains("Erro: Data de ida não pode ser maior que a data de volta.", oferta.Erros.Sumario);
+        Assert.Contains("Erro: Data de ida nao pode ser maior que a data de volta.", oferta.Erros.Sumario);
         Assert.NotEqual(dataInicial, dataFinal);
         Assert.False(oferta.EhValido);
     }
@@ -74,7 +74,7 @@ public class OfertaViagemConstrutor
         OfertaViagem oferta = new OfertaViagem(rota, periodo, preco);
 
         //assert
-        Assert.Contains("O preço da oferta de viagem deve ser maior que zero.", oferta.Erros.Sumario);
+        Assert.Contains("O preco da oferta de viagem deve ser maior que zero.", oferta.Erros.Sumario);
     }
     [Fact]
     public void RetornaTresErrosDeValidacaoQuandoRotaPeriodoEPRecoSaoInvalidos()

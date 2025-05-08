@@ -22,11 +22,11 @@ public class Rota : Valida
     {
         if ((this.Origem is null) || this.Origem.Equals(string.Empty))
         {
-            Erros.RegistrarErro("A rota não pode possuir uma origem nula ou vazia.");
+            Erros.RegistrarErro("A rota nao pode possuir uma origem nula ou vazia.");
         }
         else if ((this.Destino is null) || this.Destino.Equals(string.Empty))
         {
-            Erros.RegistrarErro("A rota não pode possuir um destino nulo ou vazio.");
+            Erros.RegistrarErro("A rota nao pode possuir um destino nulo ou vazio.");
         }
     }
 }

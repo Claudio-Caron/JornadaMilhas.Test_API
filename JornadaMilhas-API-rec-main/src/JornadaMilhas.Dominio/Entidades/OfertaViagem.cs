@@ -58,11 +58,11 @@ public class OfertaViagem : Valida
         }
         if (Rota == null || Periodo == null)
         {
-            Erros.RegistrarErro("A oferta de viagem não possui rota ou período válidos.");
+            Erros.RegistrarErro("A oferta de viagem nao possui rota ou periodo validos.");
         }
         if (Preco <= 0)
         {
-            Erros.RegistrarErro("O preço da oferta de viagem deve ser maior que zero.");
+            Erros.RegistrarErro("O preco da oferta de viagem deve ser maior que zero.");
         }
     }
 }
