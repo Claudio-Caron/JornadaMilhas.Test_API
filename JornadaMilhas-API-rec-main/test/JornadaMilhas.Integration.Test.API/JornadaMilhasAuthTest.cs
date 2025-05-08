@@ -1,7 +1,7 @@
 ﻿
 
+
 using JornadaMilhas.API.DTO.Auth;
-using Microsoft.Identity.Client;
 using System.Net;
 using System.Net.Http.Json;
 

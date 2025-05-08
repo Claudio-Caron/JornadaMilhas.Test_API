@@ -18,13 +18,13 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\JornadaMilhas-API-rec-main\src\JornadaMilhas.API\JornadaMilhas.API.csproj" />
-    <ProjectReference Include="..\JornadaMilhas-API-rec-main\src\JornadaMilhas.Dados\JornadaMilhas.Dados.csproj" />
-    <ProjectReference Include="..\JornadaMilhas-API-rec-main\src\JornadaMilhas.Dominio\JornadaMilhas.Dominio.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\JornadaMilhas.API\JornadaMilhas.API.csproj" />
+		<ProjectReference Include="..\..\src\JornadaMilhas.Dados\JornadaMilhas.Dados.csproj" />
+		<ProjectReference Include="..\..\src\JornadaMilhas.Dominio\JornadaMilhas.Dominio.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
-﻿using JornadaMilhas.Dominio.Entidades;
+﻿using JornadaMilhas.API.DTO.Request;
+using JornadaMilhas.Dominio.Entidades;
 using JornadaMilhas.Dominio.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -34,15 +35,21 @@ public class OfertaViagem_PUT : IClassFixture<JornadaMilhasWebApplicationFactory
             app.Context.SaveChanges();
         }
 
-        ofertaExistente.Rota = new Rota("Origem2", "Destino2");
-        ofertaExistente.Periodo = new Periodo(DateTime.Parse("2024-05-05"), DateTime.Parse("2024-05-08"));
-        ofertaExistente.Preco = 100;
+        
 
         var client = await app.GetClientWithAccessTokenAsync();
 
+        var ofertaReq = new OfertaViagemEditRequest
+        (
+         Id: ofertaExistente.Id,
+         desconto: 0,
+         rota: new RotaRequest("Origem2", "Destino2"),
+         periodo: new PeriodoRequest(DateTime.Parse("2024-05-05"), DateTime.Parse("2024-05-08")),
+         preco: 100
+        );
 
         //Act
-        var result = await client.PutAsJsonAsync("/ofertas-viagem", ofertaExistente);
+        var result = await client.PutAsJsonAsync("/ofertas-viagem", ofertaReq);
 
         //Assert
         Assert.NotNull(result);
