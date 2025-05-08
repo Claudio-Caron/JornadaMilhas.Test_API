@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		script.bat = script.bat
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JornadaMilhas.Test", "test\JornadaMilhas.Unit.Test\JornadaMilhas.Test.csproj", "{DDAD7F47-AD4B-4F67-85D2-B5B036349A9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JornadaMilhas.Unit.Test", "test\JornadaMilhas.Unit.Test\JornadaMilhas.Unit.Test.csproj", "{DDAD7F47-AD4B-4F67-85D2-B5B036349A9C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JornadaMilhas.Integration.Test.API", "test\JornadaMilhas.Integration.Test.API\JornadaMilhas.Integration.Test.API.csproj", "{74AD3A89-AF18-437D-A472-C1636BA5488E}"
 EndProject
