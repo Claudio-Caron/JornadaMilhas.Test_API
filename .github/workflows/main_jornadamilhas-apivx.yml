@@ -55,4 +55,4 @@ jobs:
           app-name: 'jornadamilhas-apiVX'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_70483339E1FA4F3DA7EBCF3B50607A48 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_28287208A6D742118AF9FEEC7A1856E8 }}
