@@ -1,23 +1,53 @@
-# dotnet test ./test/JornadaMilhas.Unit.Test
-# dotnet test ./test/JornadaMilhas.Integration.Test.API
-# dotnet publish ./src/JornadaMilhas.API
 name: Pipeline
+
 on:
-    push:
-        branches: ["main"]
+  push:
+    branches: ["main"]
+
 jobs: 
-    build:
-        name: Minha primeira pipeline
-        runs-on: ubuntu-latest
-        steps:
-            - name: Setup .NET
-              uses: actions/setup-dotnet@v2
-              with:
-                dotnet-version: 8.0.x
-            - name: Checkout do código
-              uses: actions/checkout@v2
-            - name: Execução do teste de unidade
-              run: dotnet test ./JornadaMilhas-API-rec-main/test/JornadaMilhas.Unit.Test
-            - name: Publicando a API
-              run: dotnet publish ./JornadaMilhas-API-rec-main/src/JornadaMilhas.API
-        
+  build:
+    name: Minha primeira pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Checkout do código
+        uses: actions/checkout@v2
+
+      - name: Execução do teste de unidade
+        run: dotnet test ./JornadaMilhas-API-rec-main/test/JornadaMilhas.Unit.Test
+
+      - name: Publicando a API
+        run: dotnet publish -c Release -o ./publish ./JornadaMilhas-API-rec-main/src/JornadaMilhas.API
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dotnet-app
+          path: ./publish
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: dotnet-app
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'jornadamilhas-api'
+          slot-name: 'Production'
+          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F50DF42F4CE1477EACC60CC00B54CE93 }}
