@@ -14,25 +14,20 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 8.0.x
-
       - name: Checkout do código
         uses: actions/checkout@v2
-
       - name: Execução do teste de unidade
         run: dotnet test ./test/JornadaMilhas.Unit.Test
-
       - name: Testes de Integração
         run: dotnet test ./test/JornadaMilhas.Integration.Test.API
 
       - name: Publicando a API
         run: dotnet publish -c Release -o ${{ env.DOTNET_ROOT }}/myapp ./src/JornadaMilhas.API
-
       - name: Upload de artefato para deploy
         uses: actions/upload-artifact@v3.1.2
         with:
           name: .net-app
           path: ${{ env.DOTNET_ROOT }}/myapp
-
   deploy:
     name: Deploy para Produção
     runs-on: ubuntu-latest
