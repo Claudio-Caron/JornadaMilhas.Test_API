@@ -2,21 +2,27 @@
 
 
 using JornadaMilhas.API.DTO.Auth;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System.Net;
 using System.Net.Http.Json;
 
 namespace JornadaMilhas.Integration.Test.API;
 
-public class JornadaMilhasAuthTest
+public class JornadaMilhasAuthTest : IClassFixture<JornadaMilhasWebApplicationFactory>
 {
+    private JornadaMilhasWebApplicationFactory _app;
+    public JornadaMilhasAuthTest(JornadaMilhasWebApplicationFactory app)
+    {
+        _app = app;
+    }
     [Fact]
     public async Task POST_Efetua_Login_Com_Sucesso()
     {
         //Arrange
-        var app = new JornadaMilhasWebApplicationFactory();
+        
         var user = new UserDTO { Email = "tester@email.com", Password = "Senha123@" };
-
-        using var client = app.CreateClient();
+        
+        using var client = _app.CreateClient();
         //Act
         var resultado = await client.PostAsJsonAsync("/auth-login", user);
 
@@ -28,9 +34,9 @@ public class JornadaMilhasAuthTest
     {
         //Arrange
         var user = new UserDTO() { Email=  "Email@gmail.com", Password = "@Senha1234" };
-        var factory = new JornadaMilhasWebApplicationFactory();
+        
 
-        using var client = factory.CreateClient();
+        using var client = _app.CreateClient();
         //Act
         var cadastro = await client.PostAsJsonAsync("/auth-login", user);
 
