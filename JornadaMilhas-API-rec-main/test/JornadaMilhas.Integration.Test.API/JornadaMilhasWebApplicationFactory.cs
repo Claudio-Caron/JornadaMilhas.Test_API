@@ -13,6 +13,7 @@ namespace JornadaMilhas.Integration.Test.API;
 
 public class JornadaMilhasWebApplicationFactory:WebApplicationFactory<Program>, IAsyncLifetime
 {
+    private string _connectionString = string.Empty;
     public JornadaMilhasContext Context { get; private set; }
 
     private MsSqlContainer _msSqlContainer = new MsSqlBuilder()
@@ -33,7 +34,7 @@ public class JornadaMilhasWebApplicationFactory:WebApplicationFactory<Program>, 
             options
             .UseLazyLoadingProxies()
             .UseSqlServer
-            (_msSqlContainer.GetConnectionString()));
+            (_connectionString));
 
         });
         base.ConfigureWebHost(builder);
@@ -61,6 +62,7 @@ public class JornadaMilhasWebApplicationFactory:WebApplicationFactory<Program>, 
     public async Task InitializeAsync()
     {
         await _msSqlContainer.StartAsync();
+        _connectionString = _msSqlContainer.GetConnectionString();
         this.scope = Services.CreateScope();
         Context =  scope.ServiceProvider.GetRequiredService<JornadaMilhasContext>();
     }
