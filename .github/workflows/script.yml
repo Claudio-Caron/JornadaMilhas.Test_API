@@ -19,7 +19,7 @@ jobs:
       - name: Aguardar ambiente estável
         run: sleep 10
       - name: Restaurar dependências
-        run: dotnet restore JornadaMilhas-API-rec-main/JornadaMilhas.sln
+        run: dotnet restore JornadaMilhas-API-rec-main/JornadaMilhas-API.sln
       #dotnet test ./test/JornadaMilhas.Unit.Test
       - name: Execucao do teste de unidade 
         run: dotnet test ./JornadaMilhas-API-rec-main/test/JornadaMilhas.Unit.Test
