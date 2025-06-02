@@ -16,6 +16,10 @@ jobs:
           dotnet-version: 8.0.x
       - name: Checkout do codigo
         uses: actions/checkout@v2 
+      - name: Aguardar ambiente estável
+        run: sleep 10
+      - name: Restaurar dependências
+        run: dotnet restore
       #dotnet test ./test/JornadaMilhas.Unit.Test
       - name: Execucao do teste de unidade 
         run: dotnet test ./JornadaMilhas-API-rec-main/test/JornadaMilhas.Unit.Test

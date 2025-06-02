@@ -55,13 +55,32 @@ namespace JornadaMilhas.Integration.Test.API
         public async Task InitializeAsync()
         {
             await _mssqlContainer.StartAsync();
-            this.scope = Services.CreateScope();
-            Context = scope.ServiceProvider.GetRequiredService<JornadaMilhasContext>();
+
+            var maxTentativas = 10;
+            var delay = TimeSpan.FromSeconds(2);
+
+            for (int i = 0; i < maxTentativas; i++)
+            {
+                try
+                {
+                    this.scope = Services.CreateScope();
+                    Context = scope.ServiceProvider.GetRequiredService<JornadaMilhasContext>();
+                    await Context.Database.CanConnectAsync();
+                    break;
+                }
+                catch
+                {
+                    await Task.Delay(delay);
+                }
+            }
+            //this.scope = Services.CreateScope();
+            //Context = scope.ServiceProvider.GetRequiredService<JornadaMilhasContext>();
 
         }
 
         async Task IAsyncLifetime.DisposeAsync()
         {
+            if (scope is not null) scope.Dispose();
             await _mssqlContainer.DisposeAsync();
         }
 
