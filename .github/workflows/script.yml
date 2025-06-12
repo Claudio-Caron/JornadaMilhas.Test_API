@@ -7,7 +7,7 @@ on:
   branches: ["main"]
 jobs:
   build:
-   name: Minha primeira pipeline  
+   name: Build and Tests  
    runs-on: ubuntu-latest
    steps:     
       - name: Setup .NET
