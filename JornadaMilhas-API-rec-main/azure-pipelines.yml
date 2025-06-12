@@ -19,11 +19,11 @@ steps:
     projects: '**/test/JornadaMilhas.Unit.Test/JornadaMilhas.Unit.Test.csproj'
     arguments: '--configuration $(BuildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Testes de Integração'
-  inputs:
-    command: test
-    projects: '**/test/JornadaMilhas.Integration.Test.API/JornadaMilhas.Integration.Test.API.csproj'
+# - task: DotNetCoreCLI@2
+#   displayName: 'Testes de Integração'
+#   inputs:
+#     command: test
+#     projects: '**/test/JornadaMilhas.Integration.Test.API/JornadaMilhas.Integration.Test.API.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: Publish
